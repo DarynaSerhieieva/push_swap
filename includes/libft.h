@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dserhiei <dserhiei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:53:22 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/10/06 18:09:15 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:08:06 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void			ft_print_decimal(int dec, int *leng);
 void			ft_un_decimal(unsigned int num, int *leng);
 void			ft_print_num_hex(unsigned int num, const char fmt, int *leng);
 void			ft_puthex(uintptr_t num, int *leng, int is_upper);
+void			ft_free_matrix(void **matrix, int size);
 
 size_t			ft_strlen(const char *s);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);

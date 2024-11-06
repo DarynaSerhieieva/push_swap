@@ -1,6 +1,24 @@
 #include <libft.h>
 #include <push_swap.h>
 
+void	free_memory(t_list *list)
+{
+	for (int i = 0; i < list->size; i++) {
+        printf("a[%d] = %d\n", i, list->a[i]);
+    }
+	if (list->size == 0 && list->list_a)
+		ft_free_matrix((void **)list->list_a, list->size);
+	if (list->a)
+	{
+		free(list->a);
+		list->a = NULL;
+	}
+		
+	for (int i = 0; i < list->size; i++) {
+        printf("list_a[%d] = %s\n", i, list->list_a[i]);
+    }
+}
+
 int	list_size(char **list)
 {
 	int	i;
@@ -11,7 +29,7 @@ int	list_size(char **list)
 	return (i);
 }
 
-int	creat_a_list(int *a, char **list, int start_index)
+int	fill_list_a(int *a, char **list, int start_index)
 {
 	int	i;
 	int	j;
