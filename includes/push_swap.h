@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dserhiei <dserhiei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:15:11 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/11/05 17:53:22 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:03:49 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@ int	push_swap(int x);
 
 //utils
 int	list_size(char **list);
+int	creat_a_list(int *a, char **list, int start_index);
+int	check_dublicat(int *a, int size);
+
 
 #endif
