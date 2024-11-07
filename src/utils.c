@@ -14,7 +14,7 @@ int	list_size(char **list)
 void	free_memory(t_list *list)
 {
 	if (list->start_index == 0 && list->list_a)
-		ft_free_matrix((void **)list->list_a, list->size);
+		ft_free_matrix((void **)list->list_a, list->capacity);
 	if (list->a)
 	{
 		free(list->a);

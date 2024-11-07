@@ -76,22 +76,27 @@ int	check_argv(int argc, char **argv, t_list *list)
 		list->list_a = ft_split(argv[1], ' ');
 		if (!list->list_a)
 			return (ft_printf("Error: can not split the line!\n"), 0);
-		list->size = list_size(list->list_a);
+		list->capacity = list_size(list->list_a);
 	}
 	else
 	{
-		list->size = argc - 1;
+		list->capacity = argc - 1;
 		list->list_a = argv;
 		list->start_index = 1;
 	}
-	if (list->size < 1)
+	if (list->capacity < 1)
 		return (ft_printf("Error: size is not valid!\n"), 0);
-	list->a = (int *)malloc((list->size + 1) * sizeof(int));
+	list->size_a = list->capacity;
+	ft_printf("size_a: %d, capacity: %d\n", list->size_a, list->capacity);
+	list->a = (int *)malloc(list->capacity * sizeof(int));
 	if (!list->a)
+		return (ft_printf("Error: memory allocation error!\n"), 0);
+	list->b = (int *)malloc(list->capacity * sizeof(int));
+	if (!list->b)
 		return (ft_printf("Error: memory allocation error!\n"), 0);
 	if (!fill_list_a(list->a, list->list_a, list->start_index))
 		return (0);
-	if (!check_dublicat(list->a, list->size))
+	if (!check_dublicat(list->a, list->size_a))
 		return (0);
 	return (1);
 }

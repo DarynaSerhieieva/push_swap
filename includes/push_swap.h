@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:15:11 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/11/07 20:18:46 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/11/07 22:00:27 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ typedef struct s_list
 	char	**list_a;
 	int		*a;
 	int		*b;
-	int		size;
+	int		capacity;
+	int		size_a;
+	int		size_b;
 	int		start_index;
 }	t_list;
 
@@ -40,4 +42,6 @@ int		ft_atoi_custom(const char *nptr, int *array, int index);
 
 //list_manipulation
 void	ft_swap(int *list, int size);
+void	ft_push(int *dest, int *list, int size);
+
 #endif

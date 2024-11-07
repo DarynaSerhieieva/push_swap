@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:14:54 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/11/07 18:11:25 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/11/07 22:16:05 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	main(int argc, char **argv)
 	t_list	list;
 
 	list.a = NULL;
-	list.size = 0;
+	list.size_a = 0;
+	list.size_b = 0;
+	list.capacity = 0;
 	list.start_index = 0;
 	if (argc < 2)
 		return (ft_printf("Error: not enough arguments!\n"), 1);
@@ -27,9 +29,21 @@ int	main(int argc, char **argv)
 		free_memory(&list);
 		return (1);
 	}
-	for(int i = 0; i < list.size; i++)
+	for(int i = 0; i < list.size_a; i++)
 	{
 		ft_printf("Each befor number: %d\n", list.a[i]);
+	}
+	// ft_push(list.b, list.a, list.size_a);
+	// ft_push(list.b, list.a, list.size_a);
+	// ft_push(list.b, list.a, list.size_a);
+	// ft_push(list.b, list.a, list.size_a);
+	for(int i = 0; i < list.size_a; i++)
+	{
+		ft_printf("Number A after: %d\n", list.a[i]);
+	}
+	for(int i = 0; i < list.size_b; i++)
+	{
+		ft_printf("Number B after: %d\n", list.b[i]);
 	}
 	free_memory(&list);
 
