@@ -1,24 +1,6 @@
 #include <libft.h>
 #include <push_swap.h>
 
-void	free_memory(t_list *list)
-{
-	for (int i = 0; i < list->size; i++) {
-        printf("a[%d] = %d\n", i, list->a[i]);
-    }
-	if (list->size == 0 && list->list_a)
-		ft_free_matrix((void **)list->list_a, list->size);
-	if (list->a)
-	{
-		free(list->a);
-		list->a = NULL;
-	}
-		
-	for (int i = 0; i < list->size; i++) {
-        printf("list_a[%d] = %s\n", i, list->list_a[i]);
-    }
-}
-
 int	list_size(char **list)
 {
 	int	i;
@@ -29,49 +11,18 @@ int	list_size(char **list)
 	return (i);
 }
 
-int	fill_list_a(int *a, char **list, int start_index)
+void	free_memory(t_list *list)
 {
-	int	i;
-	int	j;
-
-	i = start_index;
-	j = 0;
-	while (list[i])
+	if (list->start_index == 0 && list->list_a)
+		ft_free_matrix((void **)list->list_a, list->size);
+	if (list->a)
 	{
-		j = 0;
-		while (list[i][j])
-		{
-			if (j == 0 && (list[i][j] == '+' || list[i][j] == '-'))
-				j++;
-			else if (ft_isdigit(list[i][j]))
-				j++;
-			else
-				return (ft_printf("A charecter is not a number\n"), 0);
-		}
-		*a = ft_atoi(list[i]);
-		i++;
-		a++;
+		free(list->a);
+		list->a = NULL;
 	}
-	return (1);
-}
-
-int	check_dublicat(int *a, int size)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < size)
+	if (list->b)
 	{
-		j = i;
-		while (j < size)
-		{
-			if (i != j && a[i] == a[j])
-				return (ft_printf("Error: a list has a dublicat\n"), 0);
-			j++;
-		}
-		i++;
+		free(list->b);
+		list->b = NULL;
 	}
-	return (1);
 }

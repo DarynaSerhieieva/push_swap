@@ -8,10 +8,12 @@ LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_INC = -I$(INCLUDES)
 
 # Source files and object files
-SRC_FILES	= push_swap utils
+SRC_FILES	= push_swap list_validation list_manipulation utils
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(SRC:.c=.o)
 
+# Main target
+all: $(NAME)
 
 # To link with the required internal Linux API:
 $(NAME): $(OBJ) $(LIBFT)
@@ -37,3 +39,4 @@ fclean: clean
 
 # Recompile everything
 re: fclean all
+	make re -C $(LIBFT_DIR)
