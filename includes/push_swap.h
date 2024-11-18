@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:15:11 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/11/07 22:00:27 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:54:40 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int		ft_atoi_custom(const char *nptr, int *array, int index);
 
 //list_manipulation
 void	ft_swap(int *list, int size);
-void	ft_push(int *dest, int *list, int size);
+void	ft_push(int *dest, int *list, int *dest_size, int *list_size);
+void	ft_rotate( int *list, int list_size);
+void	ft_reverse_rotate(int *list, int list_size);
 
 #endif

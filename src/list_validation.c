@@ -87,13 +87,13 @@ int	check_argv(int argc, char **argv, t_list *list)
 	if (list->capacity < 1)
 		return (ft_printf("Error: size is not valid!\n"), 0);
 	list->size_a = list->capacity;
-	ft_printf("size_a: %d, capacity: %d\n", list->size_a, list->capacity);
 	list->a = (int *)malloc(list->capacity * sizeof(int));
 	if (!list->a)
-		return (ft_printf("Error: memory allocation error!\n"), 0);
+		return (ft_printf("Error: memory allocation fals!\n"), 0);
 	list->b = (int *)malloc(list->capacity * sizeof(int));
 	if (!list->b)
-		return (ft_printf("Error: memory allocation error!\n"), 0);
+		return (ft_printf("Error: memory allocation fals!\n"), 0);
+	list->size_a = list->capacity;
 	if (!fill_list_a(list->a, list->list_a, list->start_index))
 		return (0);
 	if (!check_dublicat(list->a, list->size_a))

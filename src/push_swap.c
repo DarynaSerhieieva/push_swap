@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:14:54 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/11/07 22:16:05 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:59:31 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,19 @@ int	main(int argc, char **argv)
 	{
 		ft_printf("Each befor number: %d\n", list.a[i]);
 	}
-	// ft_push(list.b, list.a, list.size_a);
-	// ft_push(list.b, list.a, list.size_a);
-	// ft_push(list.b, list.a, list.size_a);
-	// ft_push(list.b, list.a, list.size_a);
-	for(int i = 0; i < list.size_a; i++)
+	// ft_push(list.b, list.a, &list.size_b, &list.size_a);
+	// ft_push(list.b, list.a, &list.size_b, &list.size_a);
+	ft_reverse_rotate( list.a, list.size_a);
+	ft_rotate( list.b, list.size_b);
+	for(int i = 0; i < list.capacity; i++)
 	{
 		ft_printf("Number A after: %d\n", list.a[i]);
 	}
-	for(int i = 0; i < list.size_b; i++)
+	for(int i = 0; i < list.capacity; i++)
 	{
 		ft_printf("Number B after: %d\n", list.b[i]);
 	}
+	ft_printf("size A: %d, size B : %d\n", list.size_a, list.size_b);
 	free_memory(&list);
 
 	return (0);

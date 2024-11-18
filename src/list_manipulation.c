@@ -12,31 +12,62 @@ void	ft_swap(int *list, int size)
 	list[1] = first;
 }
 
-// void	ft_push(int *dest, int *list, int size_a, int size_b, int capacity)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	tmp;
+void	ft_push(int *dest, int *list, int *dest_size, int *list_size)
+{
+	int	i;
+	int	j;
+	int	tmp;
 
-// 	if (*list <= 0)
-// 	{
-// 		ft_printf("work:\n");
-// 		return ;
-// 	}
-// 	tmp = list[0];
-// 	i = 0;
-// 	while (i < size)
-// 	{
-// 		list[i] = list[i + 1];
-// 		i++;
-// 	}
-// 	j = size - 1;
-// 	while (j > 0)
-// 	{
-// 		ft_printf("here befor: %d, %d\n", dest[j], j);
-// 		dest[j] = dest[j - 1];
-// 		ft_printf("here: %d\n", dest[j]);
-// 		j--;
-// 	}
-// 	dest[size] = tmp;
-// }
+	tmp = list[0];
+	i = 0;
+	if (*list_size < 1)
+		return ;
+	while (i < *list_size)
+	{
+		list[i] = list[i + 1];
+		i++;
+	}
+	j = *dest_size;
+	while (j >= 0)
+	{
+		dest[j + 1] = dest[j];
+		j--;
+	}
+	dest[0] = tmp;
+	*dest_size += 1;
+	*list_size -= 1;
+}
+
+void	ft_rotate(int *list, int list_size)
+{
+	int	i;
+	int	tmp;
+
+	i = 0;
+	tmp = list[0];
+	if (list_size < 2)
+		return ;
+	while (i < list_size)
+	{
+		list[i] = list[i + 1];
+		i++;
+	}
+	list[list_size - 1] = tmp;
+}
+
+void	ft_reverse_rotate(int *list, int list_size)
+{
+	int	i;
+	int	tmp;
+
+	i = list_size - 1;
+	tmp = list[i];
+	if (list_size < 2)
+		return ;
+	while (i > 0)
+	{
+		list[i] = list[i - 1];
+		i--;
+	}
+	list[0] = tmp;
+}
