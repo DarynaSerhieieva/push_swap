@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:14:54 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/11/18 19:59:31 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:19:44 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ int	main(int argc, char **argv)
 	{
 		ft_printf("Each befor number: %d\n", list.a[i]);
 	}
-	// ft_push(list.b, list.a, &list.size_b, &list.size_a);
-	// ft_push(list.b, list.a, &list.size_b, &list.size_a);
-	ft_reverse_rotate( list.a, list.size_a);
-	ft_rotate( list.b, list.size_b);
+	ft_sort(&list);
 	for(int i = 0; i < list.capacity; i++)
 	{
 		ft_printf("Number A after: %d\n", list.a[i]);
