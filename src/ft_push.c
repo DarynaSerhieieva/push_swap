@@ -31,10 +31,12 @@ void	pa(t_list *list)
 {
 	ft_push(list->a, list->b, &list->size_a, &list->size_b);
 	ft_printf("pa\n");
+	list->test++;
 }
 
 void	pb(t_list *list)
 {
 	ft_push(list->b, list->a, &list->size_b, &list->size_a);
 	ft_printf("pb\n");
+	list->test++;
 }

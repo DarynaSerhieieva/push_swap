@@ -16,12 +16,14 @@ void	sa(t_list *list)
 {
 	ft_swap(list->a, list->size_a);
 	ft_printf("sa\n");
+	list->test++;
 }
 
 void	sb(t_list *list)
 {
 	ft_swap(list->b, list->size_b);
 	ft_printf("sb\n");
+	list->test++;
 }
 
 void	ss(t_list *list)
@@ -29,4 +31,5 @@ void	ss(t_list *list)
 	ft_swap(list->a, list->size_a);
 	ft_swap(list->b, list->size_b);
 	ft_printf("ss\n");
+	list->test++;
 }

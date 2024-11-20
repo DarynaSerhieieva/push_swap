@@ -22,12 +22,14 @@ void	ra(t_list *list)
 {
 	ft_rotate(list->a, list->size_a);
 	ft_printf("ra\n");
+	list->test++;
 }
 
 void	rb(t_list *list)
 {
 	ft_rotate(list->b, list->size_b);
 	ft_printf("rb\n");
+	list->test++;
 }
 
 void	rr(t_list *list)
@@ -35,4 +37,5 @@ void	rr(t_list *list)
 	ft_rotate(list->a, list->size_a);
 	ft_rotate(list->b, list->size_b);
 	ft_printf("rr\n");
+	list->test++;
 }

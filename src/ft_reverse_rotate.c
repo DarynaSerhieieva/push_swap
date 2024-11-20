@@ -23,12 +23,14 @@ void	rra(t_list *list)
 {
 	ft_reverse_rotate(list->a, list->size_a);
 	ft_printf("rra\n");
+	list->test++;
 }
 
 void	rrb(t_list *list)
 {
 	ft_reverse_rotate(list->b, list->size_b);
 	ft_printf("rrb\n");
+	list->test++;
 }
 
 void	rrr(t_list *list)
@@ -36,4 +38,5 @@ void	rrr(t_list *list)
 	ft_reverse_rotate(list->a, list->size_a);
 	ft_reverse_rotate(list->b, list->size_b);
 	ft_printf("rrr\n");
+	list->test++;
 }
