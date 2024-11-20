@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:14:54 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/11/20 19:38:40 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/11/20 22:04:11 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	t_list	list;
 
 	list.test = 0;
+	list.count = 0;
 	list.a = NULL;
 	list.size_a = 0;
 	list.size_b = 0;
@@ -34,13 +35,17 @@ int	main(int argc, char **argv)
 	// {
 	// 	ft_printf("Each befor number: %d\n", list.a[i]);
 	// }
-	quicksort(&list);
-	merg(&list);
+
+	// ft_sort(&list);
+
+	sort_stack(&list);
+
+	ft_printf("Number A  after: ");
 	for(int i = 0; i < list.capacity; i++)
 	{
-		ft_printf("Number A after: %d\n", list.a[i]);
+		ft_printf("%d,", list.a[i]);
 	}
-
+	ft_printf("\n");
 	ft_printf("count: %d, %d\n", list.test, list.capacity);
 
 	// for(int i = 0; i < list.capacity; i++)
