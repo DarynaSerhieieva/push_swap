@@ -17,12 +17,14 @@ int	ft_atoi_custom(const char *nptr, int *array, int index)
 		nptr++;
 	while (*nptr != '\0')
 	{
-		digit = *nptr - '0';
 		if (!ft_isdigit(*nptr))
 			return (ft_printf("Error: the charecter is not digit\n"), 0);
+		digit = *nptr - '0';
 		if (sign == 1 && (array[index] > (INT_MAX - digit) / 10))
 			return ((ft_printf("Error: the INT is to big\n"), 0));
-		else if (sign == -1 && (array[index] > (INT_MAX - digit + 1) / 10))
+		else if (sign == -1 && digit == 0 && (array[index] > INT_MAX / 10))
+			return (ft_printf("Error: the INT is to small\n"), 0);
+		else if (sign == -1 && digit != 0 && array[index] > (INT_MAX - digit + 1) / 10)
 			return (ft_printf("Error: the INT is to small\n"), 0);
 		array[index] = array[index] * 10 + digit;
 		nptr++;

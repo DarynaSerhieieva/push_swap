@@ -8,14 +8,15 @@ void	ft_push(int *dest, int *list, int *dest_size, int *list_size)
 	int	tmp;
 
 	tmp = list[0];
-	i = 0;
+	i = 1;
 	if (*list_size < 1)
 		return ;
 	while (i < *list_size)
 	{
-		list[i] = list[i + 1];
+		list[i - 1] = list[i];
 		i++;
 	}
+	list[*list_size - 1] = 0;
 	j = *dest_size;
 	while (j >= 0)
 	{

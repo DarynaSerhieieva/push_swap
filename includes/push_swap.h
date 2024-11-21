@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:15:11 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/11/20 22:03:48 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/11/21 19:19:35 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,22 @@ int		check_argv(int argc, char **argv, t_list *list);
 int		ft_atoi_custom(const char *nptr, int *array, int index);
 
 //sort
-void sort_stack(t_list *list);
-void	ft_sort(t_list *list);
-void	quicksort_b(t_list *list, int size);
-void	quicksort_a(t_list *list, int size);
-void	partition(t_list *list, int pivot, int size);
-// void	merg(t_list *list);
-// void	quicksort(t_list *list, int pivot);
-// void	sort_a_b(t_list *list);
-// void	sort_a(t_list *list);
-// void	sort_b(t_list *list);
+void	swap(int *x, int *y);
+void	quicksort(t_list *list, int *arrey, int size, char letter);
+void	quicksort_recursion(int *array, int low, int high);
+int		partition(int *array, int low, int high);
+
+// void sort_stack(t_list *list);
 // void	ft_sort(t_list *list);
+// void	quicksort_b(t_list *list, int size);
+// void	quicksort_a(t_list *list, int size);
+// void	partition(t_list *list, int pivot, int size);
+void	merg(t_list *list);
+void	quicksort_b(t_list *list);
+void	sort_a_b(t_list *list);
+void	sort_a(t_list *list);
+void	sort_b(t_list *list);
+void	ft_sort(t_list *list);
 
 //swap
 void	ft_swap(int *list, int size);

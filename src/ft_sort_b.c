@@ -23,8 +23,8 @@ void	sort_a(t_list *list)
 		ra(list);
 	if (list->a[0] > list->a[1])
 		sa(list);
-	// if (list->a[0] > list->a[list->size_a - 1])
-	// 	rra(list);
+	if (list->a[0] > list->a[list->size_a - 1])
+		rra(list);
 }
 
 void	sort_a_b(t_list *list)
@@ -44,36 +44,20 @@ void	sort_a_b(t_list *list)
 	}
 }
 
-void	quicksort(t_list *list, int pivot)
+void	quicksort_a(t_list *list)
 {
-	ft_printf("Number A  after: ");
-	for(int i = 0; i < list->capacity; i++)
-	{
-		ft_printf("%d,", list->a[i]);
-	}
-	ft_printf("\nNumber B after: ");
-	for(int i = 0; i < list->capacity; i++)
-	{
-		ft_printf("%d,", list->b[i]);
-	}
-	ft_printf("\n");
+	pb(list);
 	sort_a_b(list);
-	sort_a(list);
 	sort_b(list);
-	if (pivot > list->a[0])
-		pb(list);
-	else
-		ra(list);
-	list->count++;
-	if (list->size_a <= 1 || list->count >= list->capacity)
+	sort_a(list);
+	if (list->size_a <= 1)
 		return ;
 	else
-		quicksort(list, pivot);
+		quicksort_a(list);
 }
 
 void	merg(t_list *list)
 {
-	// ft_printf("SIZE B: %d\n", list->size_b);
 	sort_a_b(list);
 	sort_b(list);
 	sort_a(list);
@@ -86,10 +70,10 @@ void	merg(t_list *list)
 
 void	ft_sort(t_list *list)
 {
-	int	pivot;
-
-	pivot = list->a[0];
-	quicksort(list, pivot);
+	sort_a_b(list);
+	sort_a(list);
+	sort_b(list);
+	quicksort_a(list);
 	merg(list);
 }
 
