@@ -26,8 +26,7 @@ void	sort_five(t_list *list)
 	int	i;
 
 	i = 0;
-	// 0 - 1/ 1 - 2 /
-	while (i < 2)
+	while (i < 4)
 	{
 		if (list->size_b > 1)
 		{
@@ -37,21 +36,16 @@ void	sort_five(t_list *list)
 		}
 		else
 			sort_a(list);
-		pb(list);
+		if (i < 2)
+			pb(list);
+		else
+			pa(list);
 		i++;
 	}
-	while (i < 4)
-	{
-		/* code */
-	}
-	
-	pa(list);
-	sort_a(list);
-	pa(list);
 	sort_a(list);
 }
 
-int	sort_five(t_list *list)
+void	ft_sort_small(t_list *list)
 {
 	if (list->capacity == 2)
 		sort_two(list);
@@ -60,5 +54,5 @@ int	sort_five(t_list *list)
 	if (list->capacity == 4)
 		sort_four(list);
 	if (list->capacity == 5)
-		sort_four(list);
+		sort_five(list);
 }

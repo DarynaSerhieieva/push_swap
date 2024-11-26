@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:15:11 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/11/21 19:19:35 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:40:20 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_list
 	int		start_index;
 	int		test;
 	int		count;
+	int		test2;
 }	t_list;
 
 // push_swap
@@ -44,9 +45,10 @@ int		ft_atoi_custom(const char *nptr, int *array, int index);
 
 //sort
 void	swap(int *x, int *y);
-void	quicksort(t_list *list, int *arrey, int size, char letter);
-void	quicksort_recursion(int *array, int low, int high);
-int		partition(int *array, int low, int high);
+// void	quicksort(t_list *list, int size);
+void	quicksort(t_list *list);
+void	quicksort_recursion(t_list *list, int *array, int low, int high);
+int		partition_a(t_list *list, int *array, int low, int high);
 
 // void sort_stack(t_list *list);
 // void	ft_sort(t_list *list);
@@ -59,6 +61,8 @@ void	sort_a_b(t_list *list);
 void	sort_a(t_list *list);
 void	sort_b(t_list *list);
 void	ft_sort(t_list *list);
+//
+void	ft_sort_small(t_list *list);
 
 //swap
 void	ft_swap(int *list, int size);

@@ -10,7 +10,7 @@ LIBFT_INC = -I$(INCLUDES)
 # Source files and object files
 SRC_FILES	= push_swap list_validation utils \
 			ft_swap ft_push ft_reverse_rotate \
-			ft_rotate ft_sort ft_sort_b
+			ft_rotate ft_sort ft_sort_b ft_sort_small
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(SRC:.c=.o)
 
