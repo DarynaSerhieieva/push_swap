@@ -5,8 +5,7 @@ void	sort_b(t_list *list)
 {
 	if (list->size_b <= 1)
 		return ;
-	if (list->b[0] < list->b[1] && list->b[0] < list->b[list->size_b -1] && \
-		list->b[list->size_b -1] > list->b[1])
+	if (list->b[0] < list->b[1] && list->b[0] < list->b[list->size_b -1])
 		rb(list);
 	if (list->b[0] < list->b[1])
 		sb(list);
@@ -18,8 +17,7 @@ void	sort_a(t_list *list)
 {
 	if (list->size_a <= 1)
 		return ;
-	if (list->a[0] > list->a[1] && list->a[0] > list->a[list->size_a - 1] && \
-		list->a[list->size_a - 1] < list->a[1])
+	if (list->a[0] > list->a[1] && list->a[0] > list->a[list->size_a - 1])
 		ra(list);
 	if (list->a[0] > list->a[1])
 		sa(list);
@@ -32,9 +30,7 @@ void	sort_a_b(t_list *list)
 	if (list->size_a > 2 && list->size_b > 2)
 	{
 		if (list->a[0] > list->a[1] && list->a[0] > list->a[list->size_a - 1] && \
-		list->a[list->size_a - 1] < list->a[1] && \
-		list->b[0] < list->b[1] && list->b[0] < list->b[list->size_b -1] && \
-		list->b[list->size_b -1] > list->b[1])
+		list->b[0] < list->b[1] && list->b[0] < list->b[list->size_b -1])
 			rr(list);
 		if (list->a[0] > list->a[1] && list->b[0] < list->b[1])
 			ss(list);
