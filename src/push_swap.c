@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:14:54 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/11/26 20:39:30 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:36:25 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,9 @@ int	main(int argc, char **argv)
 
 	// sort_stack(&list);
 	if (list.capacity < 6)
-	{
 		ft_sort_small(&list);
-		ft_printf("sort small\n");
-	}
 	else
-	{
-		// ft_sort(&list);
 		quicksort(&list);
-		ft_printf("sort big\n");
-	}
 		
 	ft_printf("Number A  after: ");
 	for(int i = 0; i < list.capacity; i++)

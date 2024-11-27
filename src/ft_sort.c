@@ -1,6 +1,21 @@
 #include <libft.h>
 #include <push_swap.h>
 
+int	chek_lol(int *array, int low, int high)
+{
+	int	i;
+
+	i = low;
+	ft_printf("dfsdfdsf: %d, %d\n", low, high);
+	while (i < high)
+	{
+		if (array[high] < array[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	partition_b(t_list *list, int *array, int low, int high)
 {
 	int	pivot_value;
@@ -11,54 +26,14 @@ int	partition_b(t_list *list, int *array, int low, int high)
 	pivot_value = array[high];
 	i = low;
 	j = low;
-	c = high - low;
-	while (c > 0)
-	{
-		rra(list);
-		c--;
-	}
-	while (j <= high)
-	{
-		if (array[0] <= pivot_value)
-		{
-			pb(list);
-			// sort_b(list);
-			i++;
-		}
-		else
-		{
-			pb(list);
-			rb(list);
-		}
-		j++;
-		c++;
-	}
-	ft_printf("/////////\n");
-	while (list->size_b != 0)
-		pa(list);
+	c = low;
+	// if (!chek_lol(array, low, high))
+	// 	return (high - 1);
 	while (c > 0)
 	{
 		ra(list);
 		c--;
 	}
-	ft_printf("some: %d\n", i);
-	ft_printf("Number big: ");
-	for(int i = 0; i < list->capacity; i++)
-	{
-		ft_printf("%d,", list->a[i]);
-	}
-	ft_printf("\n");
-	return (i - 1);
-}
-int	partition_a(t_list *list, int *array, int low, int high)
-{
-	int	pivot_value;
-	int	i;
-	int	j;
-
-	pivot_value = array[high];
-	i = low;
-	j = low;
 	while (j <= high)
 	{
 		if (array[0] <= pivot_value)
@@ -67,19 +42,61 @@ int	partition_a(t_list *list, int *array, int low, int high)
 			i++;
 		}
 		else
+		{
 			ra(list);
+			c++;
+		}
 		j++;
 	}
-	ft_printf("/////////\n");
+	while (c > 0)
+	{
+		rra(list);
+		c--;
+	}
 	while (list->size_b != 0)
 		pa(list);
-	ft_printf("some: %d\n", i);
-	ft_printf("Number for small: ");
-	for(int i = 0; i < list->capacity; i++)
+	while (low > 0)
 	{
-		ft_printf("%d,", list->a[i]);
+		rra(list);
+		low--;
 	}
-	ft_printf("\n");
+	return (i - 1);
+}
+
+int	partition_a(t_list *list, int *array, int low, int high)
+{
+	int	pivot_value;
+	int	i;
+	int	j;
+	int	c;
+
+	pivot_value = array[high];
+	i = low;
+	j = low;
+	c = 0;
+	// if (!chek_lol(array, low, high))
+	// 	return (high - 1);
+	while (j <= high)
+	{
+		if (array[0] <= pivot_value)
+		{
+			pb(list);
+			i++;
+		}
+		else
+		{
+			c++;
+			ra(list);
+		}
+		j++;
+	}
+	while (c > 0)
+	{
+		rra(list);
+		c--;
+	}
+	while (list->size_b != 0)
+		pa(list);
 	return (i - 1);
 }
 
@@ -89,6 +106,8 @@ int	partition(t_list *list, int *array, int low, int high)
 	int	i;
 	int	j;
 
+	// if (!chek_lol(array, low, high))
+	// 	return (high -1);
 	pivot_value = array[high];
 	i = low;
 	j = low;
@@ -103,16 +122,8 @@ int	partition(t_list *list, int *array, int low, int high)
 			ra(list);
 		j++;
 	}
-	ft_printf("/////////\n");
 	while (list->size_b != 0)
 		pa(list);
-	ft_printf("some: %d\n", i);
-	ft_printf("Number first: ");
-	for(int i = 0; i < list->capacity; i++)
-	{
-		ft_printf("%d,", list->a[i]);
-	}
-	ft_printf("\n");
 	return (i - 1);
 }
 
@@ -122,7 +133,9 @@ void	quicksort_recursion(t_list *list, int *array, int low, int high)
 
 	if (low < high)
 	{
-		if (low == 0)
+		if (list->test == 0)
+			pivot_index = partition(list, list->a, 0, high);
+		else if (low == 0)
 			pivot_index = partition_a(list, array, low, high);
 		else
 			pivot_index = partition_b(list, array, low, high);
@@ -133,12 +146,10 @@ void	quicksort_recursion(t_list *list, int *array, int low, int high)
 
 void	quicksort(t_list *list)
 {
-	int	pivot_index;
-
-	pivot_index = partition(list, list->a, 0, list->capacity - 1);
-	quicksort_recursion(list, list->a, 0, pivot_index);
+	quicksort_recursion(list, list->a, 0, list->capacity - 1);
 }
 
+/////////////////////////////////////////////////////
 // void	quicksort(t_list *list, int size)
 // {
 // 	int	i;
