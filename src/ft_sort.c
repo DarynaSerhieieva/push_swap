@@ -1,81 +1,119 @@
 #include <libft.h>
 #include <push_swap.h>
 
-// int	partition_a(t_list *list, int *array, int low, int high)
-// {
-// 	int	pivot_value;
-// 	int	i;
-// 	int	j;
-// 	int	small;
+int	partition_b(t_list *list, int *array, int low, int high)
+{
+	int	pivot_value;
+	int	i;
+	int	j;
+	int	c;
 
-// 	pivot_value = array[high];
-// 	i = low;
-// 	j = low;
-// 	small = low;
-// 	while (small != 0)
-// 	{
-// 		ra(list);
-// 		small--;
-// 	}
-// 	while (j < high)
-// 	{
-// 		if (array[0] < pivot_value)
-// 		{
-// 			pb(list);
-// 			// sort_b(list);
-// 			i++;
-// 		}
-// 		else
-// 			ra(list);
-// 		j++;
-// 	}
-// 	ft_printf("/////////\n");
-// 	while (list->size_b != 0)
-// 		pa(list);
-// 	while (low != 0)
-// 	{
-// 		rra(list);
-// 		low--;
-// 	}
-// 	ft_printf("some: %d\n", i);
-// 	ft_printf("Number A  after: ");
-// 	for(int i = 0; i < list->capacity; i++)
-// 	{
-// 		ft_printf("%d,", list->a[i]);
-// 	}
-// 	ft_printf("\n");
-// 	return (i);
-// }
-int partition_a(t_list *list, int *array, int low, int high) {
-    int pivot_value = array[high];
-    int i = low;
-
-    // Rotate stack a to bring elements within range to the top
-    for (int j = low; j < high; j++) {
-        if (array[0] < pivot_value) {
-            pb(list);  // Push smaller elements to stack b
-            i++;
-        } else {
-            ra(list);  // Rotate to skip larger elements
-        }
-    }
-
-    // Restore smaller elements from stack b back to a
-    while (list->size_b > 0) {
-        pa(list);
-    }
-
-    // Reverse rotate to restore order
-    for (int j = 0; j < high - low; j++) {
-        rra(list);
-    }
-	ft_printf("Number A  after: ");
+	pivot_value = array[high];
+	i = low;
+	j = low;
+	c = high - low;
+	while (c > 0)
+	{
+		rra(list);
+		c--;
+	}
+	while (j <= high)
+	{
+		if (array[0] <= pivot_value)
+		{
+			pb(list);
+			// sort_b(list);
+			i++;
+		}
+		else
+		{
+			pb(list);
+			rb(list);
+		}
+		j++;
+		c++;
+	}
+	ft_printf("/////////\n");
+	while (list->size_b != 0)
+		pa(list);
+	while (c > 0)
+	{
+		ra(list);
+		c--;
+	}
+	ft_printf("some: %d\n", i);
+	ft_printf("Number big: ");
 	for(int i = 0; i < list->capacity; i++)
 	{
 		ft_printf("%d,", list->a[i]);
 	}
 	ft_printf("\n");
-    return i;
+	return (i - 1);
+}
+int	partition_a(t_list *list, int *array, int low, int high)
+{
+	int	pivot_value;
+	int	i;
+	int	j;
+
+	pivot_value = array[high];
+	i = low;
+	j = low;
+	while (j <= high)
+	{
+		if (array[0] <= pivot_value)
+		{
+			pb(list);
+			i++;
+		}
+		else
+			ra(list);
+		j++;
+	}
+	ft_printf("/////////\n");
+	while (list->size_b != 0)
+		pa(list);
+	ft_printf("some: %d\n", i);
+	ft_printf("Number for small: ");
+	for(int i = 0; i < list->capacity; i++)
+	{
+		ft_printf("%d,", list->a[i]);
+	}
+	ft_printf("\n");
+	return (i - 1);
+}
+
+int	partition(t_list *list, int *array, int low, int high)
+{
+	int	pivot_value;
+	int	i;
+	int	j;
+
+	pivot_value = array[high];
+	i = low;
+	j = low;
+	while (j <= high)
+	{
+		if (array[0] <= pivot_value)
+		{
+			pb(list);
+			i++;
+		}
+		else
+			ra(list);
+		j++;
+	}
+	ft_printf("/////////\n");
+	while (list->size_b != 0)
+		pa(list);
+	ft_printf("some: %d\n", i);
+	ft_printf("Number first: ");
+	for(int i = 0; i < list->capacity; i++)
+	{
+		ft_printf("%d,", list->a[i]);
+	}
+	ft_printf("\n");
+	return (i - 1);
 }
 
 void	quicksort_recursion(t_list *list, int *array, int low, int high)
@@ -84,7 +122,10 @@ void	quicksort_recursion(t_list *list, int *array, int low, int high)
 
 	if (low < high)
 	{
-		pivot_index = partition_a(list, array, low, high);
+		if (low == 0)
+			pivot_index = partition_a(list, array, low, high);
+		else
+			pivot_index = partition_b(list, array, low, high);
 		quicksort_recursion(list, array, low, pivot_index - 1);
 		quicksort_recursion(list, array, pivot_index + 1, high);
 	}
@@ -92,7 +133,10 @@ void	quicksort_recursion(t_list *list, int *array, int low, int high)
 
 void	quicksort(t_list *list)
 {
-	quicksort_recursion(list, list->a, 0, list->capacity - 1);
+	int	pivot_index;
+
+	pivot_index = partition(list, list->a, 0, list->capacity - 1);
+	quicksort_recursion(list, list->a, 0, pivot_index);
 }
 
 // void	quicksort(t_list *list, int size)
