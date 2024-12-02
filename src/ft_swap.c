@@ -1,35 +1,35 @@
 #include <libft.h>
 #include <push_swap.h>
 
-void	ft_swap(int *list, int size)
+void	ft_swap(t_data *x, t_data *y, int size)
 {
-	int	first;
+	t_data	tmp;
 
 	if (size < 2)
 		return ;
-	first = list[0];
-	list[0] = list[1];
-	list[1] = first;
+	tmp = *x;
+	*x = *y;
+	*y = tmp;
 }
 
 void	sa(t_list *list)
 {
-	ft_swap(list->a, list->size_a);
+	ft_swap(&list->num_a[0], &list->num_a[1], list->size_a);
 	ft_printf("sa\n");
-	list->test++;
+	list->moves++;
 }
 
 void	sb(t_list *list)
 {
-	ft_swap(list->b, list->size_b);
+	ft_swap(&list->num_b[0], &list->num_b[1], list->size_b);
 	ft_printf("sb\n");
-	list->test++;
+	list->moves++;
 }
 
 void	ss(t_list *list)
 {
-	ft_swap(list->a, list->size_a);
-	ft_swap(list->b, list->size_b);
+	ft_swap(&list->num_a[0], &list->num_a[1], list->size_a);
+	ft_swap(&list->num_b[0], &list->num_b[1], list->size_b);
 	ft_printf("ss\n");
-	list->test++;
+	list->moves++;
 }

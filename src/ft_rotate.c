@@ -1,41 +1,41 @@
 #include <libft.h>
 #include <push_swap.h>
 
-void	ft_rotate(int *list, int list_size)
+void	ft_rotate(t_data *arrey, int size)
 {
-	int	i;
-	int	tmp;
+	int		i;
+	t_data	tmp;
 
 	i = 0;
-	tmp = list[0];
-	if (list_size < 2)
+	tmp = arrey[0];
+	if (size < 2)
 		return ;
-	while (i < list_size)
+	while (i < size - 1)
 	{
-		list[i] = list[i + 1];
+		arrey[i] = arrey[i + 1];
 		i++;
 	}
-	list[list_size - 1] = tmp;
+	arrey[size - 1] = tmp;
 }
 
 void	ra(t_list *list)
 {
-	ft_rotate(list->a, list->size_a);
+	ft_rotate(list->num_a, list->size_a);
 	ft_printf("ra\n");
-	list->test++;
+	list->moves++;
 }
 
 void	rb(t_list *list)
 {
-	ft_rotate(list->b, list->size_b);
+	ft_rotate(list->num_b, list->size_b);
 	ft_printf("rb\n");
-	list->test++;
+	list->moves++;
 }
 
 void	rr(t_list *list)
 {
-	ft_rotate(list->a, list->size_a);
-	ft_rotate(list->b, list->size_b);
+	ft_rotate(list->num_a, list->size_a);
+	ft_rotate(list->num_b, list->size_b);
 	ft_printf("rr\n");
-	list->test++;
+	list->moves++;
 }

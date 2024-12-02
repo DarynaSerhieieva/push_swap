@@ -3,13 +3,17 @@
 
 void	sort_two(t_list *list)
 {
-	if (list->a[0] > list->a[1])
+	if (list->num_a[0].num_int > list->num_a[1].num_int)
 		sa(list);
 }
 
 void	sort_three(t_list *list)
 {
-	sort_a(list);
+	// sort_a(list);
+	sort_two(list);
+	if (list->num_a[1].num_int > list->num_a[2].num_int)
+		rra(list);
+	sort_two(list);
 }
 
 void	sort_four(t_list *list)
