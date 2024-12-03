@@ -15,16 +15,18 @@ int	fill_list_a(t_list *list, int i)
 		list->num_a[j].num_char = ft_itoa(list->num_a[j].num_int);
 		if (list->num_a[j].num_int < 0)
 			list->num_a[j].negative = true;
-		list->num_a[j].size = ft_strlen(list->num_a[j].num_char);
+		// list->num_a[j].size = ft_strlen(list->num_a[j].num_char);
 		if (list->num_a[j].negative)
 			list->num_a[j].num_char--;
+		// if (list->num_a[j].num_int > list->max_value)
+		// 	list->max_value = list->num_a[j].num_int;
 		i++;
 		j++;
 	}
 	return (1);
 }
 
-int	check_dublicat(t_data *arrey, int size)
+int	check_dublicat(t_data *array, int size)
 {
 	int	i;
 	int	j;
@@ -36,7 +38,7 @@ int	check_dublicat(t_data *arrey, int size)
 		j = i;
 		while (j < size)
 		{
-			if (i != j && arrey[i].num_int == arrey[j].num_int)
+			if (i != j && array[i].num_int == array[j].num_int)
 				return (ft_printf("Error: a list has a dublicat\n"), 0);
 			j++;
 		}

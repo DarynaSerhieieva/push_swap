@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:15:11 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/12/03 15:29:15 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:32:11 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_data
 	char	*num_char;
 	bool	negative;
 	int		size;
+	int		index;
 }	t_data;
 
 typedef struct s_list
@@ -34,6 +35,7 @@ typedef struct s_list
 	int		size_a;
 	int		size_b;
 	int		moves;
+	int		max_value;
 }	t_list;
 
 // push_swap
@@ -45,7 +47,7 @@ void	free_memory(t_list *list, int argc);
 
 //list_validation
 int		fill_list_a(t_list *list, int start_index);
-int		check_dublicat(t_data *arrey, int size);
+int		check_dublicat(t_data *array, int size);
 int		check_argv(int argc, char **argv, t_list *list);
 int		ft_atoi_custom(char *nptr, int *num);
 
@@ -68,18 +70,20 @@ void	pa(t_list *list);
 void	pb(t_list *list);
 
 //rotate
-void	ft_rotate(t_data *arrey, int size);
+void	ft_rotate(t_data *array, int size);
 void	ra(t_list *list);
 void	rb(t_list *list);
 void	rr(t_list *list);
 
 //reverse_rotate
-void	ft_reverse_rotate(t_data *arrey, int size);
+void	ft_reverse_rotate(t_data *array, int size);
 void	rra(t_list *list);
 void	rrb(t_list *list);
 void	rrr(t_list *list);
 
 //fil data
-int		fill_data(t_data **arrey_a, t_data **arrey_b, int capacity);
+int		fill_data(t_data **array_a, t_data **array_b, int capacity);
+void	quicksort(t_list *list);
+void	my_sort(t_list *list);
 
 #endif

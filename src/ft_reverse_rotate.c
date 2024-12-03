@@ -2,21 +2,21 @@
 #include <push_swap.h>
 
 
-void	ft_reverse_rotate(t_data *arrey, int size)
+void	ft_reverse_rotate(t_data *array, int size)
 {
 	int		i;
 	t_data	tmp;
 
 	i = size - 1;
-	tmp = arrey[i];
+	tmp = array[i];
 	if (size < 2)
 		return ;
 	while (i > 0)
 	{
-		arrey[i] = arrey[i - 1];
+		array[i] = array[i - 1];
 		i--;
 	}
-	arrey[0] = tmp;
+	array[0] = tmp;
 }
 
 void	rra(t_list *list)
