@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:15:11 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/12/02 23:24:02 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:29:15 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	sb(t_list *list);
 void	ss(t_list *list);
 
 //push
-void	ft_push(t_data **dest, t_data **list, int *dest_size, int *list_size);
+void	ft_push(t_data *dest, t_data *list, int *dest_size, int *list_size);
 void	pa(t_list *list);
 void	pb(t_list *list);
 

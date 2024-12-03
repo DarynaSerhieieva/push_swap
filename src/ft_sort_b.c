@@ -25,6 +25,12 @@ void	sort_a(t_list *list)
 		sa(list);
 	if (list->num_a[0].num_int > list->num_a[list->size_a - 1].num_int)
 		rra(list);
+	if (list->num_a[1].num_int > list->num_a[0].num_int && \
+	list->num_a[1].num_int > list->num_a[list->size_a - 1].num_int)
+	{
+		sa(list);
+		ra(list);
+	}
 }
 
 void	sort_a_b(t_list *list)
