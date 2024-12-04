@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:15:11 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/12/03 21:32:11 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/12/04 22:20:11 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	rrr(t_list *list);
 //fil data
 int		fill_data(t_data **array_a, t_data **array_b, int capacity);
 void	quicksort(t_list *list);
-void	my_sort(t_list *list);
+void	my_sort(t_list *list, int size);
+void	radix_sort(t_list *list);
 
 #endif

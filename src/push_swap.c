@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:14:54 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/12/03 21:36:22 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/12/05 00:28:08 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	main(int argc, char **argv)
 	else
 	{
 		quicksort(&list);
-		my_sort(&list);
+		radix_sort(&list);
+		// my_sort(&list, list.capacity);
 	}
 		
 	ft_printf("Number A  after: ");
@@ -54,12 +55,12 @@ int	main(int argc, char **argv)
 		ft_printf("%d, ", list.num_a[i].num_int);
 	}
 	ft_printf("\n");
-	ft_printf("Number B  after: ");
-	for(int i = 0; i < list.capacity; i++)
-	{
-		ft_printf("%d, ", list.num_b[i].num_int);
-	}
-	ft_printf("\n");
+	// ft_printf("Number B  after: ");
+	// for(int i = 0; i < list.capacity; i++)
+	// {
+	// 	ft_printf("%d, ", list.num_b[i].num_int);
+	// }
+	// ft_printf("\n");
 	ft_printf("count: %d, %d\n", list.moves, list.capacity);
 
 	// for(int i = 0; i < list.capacity; i++)

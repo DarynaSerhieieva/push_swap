@@ -11,7 +11,7 @@ LIBFT_INC = -I$(INCLUDES)
 SRC_FILES	= push_swap list_validation utils \
 			ft_swap ft_push ft_reverse_rotate \
 			ft_rotate sorting_operations ft_sort_small \
-			fill_nums_data quick_sort my_sort
+			fill_nums_data quick_sort my_sort test
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(SRC:.c=.o)
 
