@@ -21,7 +21,7 @@ void	ft_rotate(t_data *array, int size)
 void	ra(t_list *list)
 {
 	ft_rotate(list->num_a, list->size_a);
-	ft_printf("ra\n");
+	// ft_printf("ra\n");
 	list->moves++;
 }
 

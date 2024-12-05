@@ -31,7 +31,7 @@ void	ft_push(t_data *dest, t_data *list, int *dest_size, int *list_size)
 void	pa(t_list *list)
 {
 	ft_push(list->num_a, list->num_b, &list->size_a, &list->size_b);
-	ft_printf("pa\n");
+	// ft_printf("pa\n");
 	list->moves++;
 }
 
