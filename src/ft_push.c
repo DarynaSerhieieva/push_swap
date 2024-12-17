@@ -1,43 +1,27 @@
 #include <libft.h>
 #include <push_swap.h>
 
-void	ft_push(t_data *dest, t_data *list, int *dest_size, int *list_size)
+void	ft_push(t_chain **src, t_chain **dst)
 {
-	int		i;
-	int		j;
-	t_data	tmp;
+	t_chain	*tmp;
 
-	i = 0;
-	tmp = dest[*dest_size];
-	if (*list_size < 1)
+	if (*src == NULL)
 		return ;
-	j = *dest_size;
-	while (j > 0)
-	{
-		dest[j] = dest[j - 1];
-		j--;
-	}
-	dest[0] = list[0];
-	while (i < *list_size)
-	{
-		list[i] = list[i + 1];
-		i++;
-	}
-	list[*list_size - 1] = tmp;
-	*dest_size += 1;
-	*list_size -= 1;
+	tmp = (*src)->next;
+	(*src)->next = *dst;
+	*dst = *src;
+	*src = tmp;
 }
 
-void	pa(t_list *list)
+void	do_pa(t_chain **chain_a, t_chain **chain_b)
 {
-	ft_push(list->num_a, list->num_b, &list->size_a, &list->size_b);
-	// ft_printf("pa\n");
-	list->moves++;
+	ft_push(chain_b, chain_a);
+	ft_putstr("pa\n");
 }
 
-void	pb(t_list *list)
+void	do_pb(t_chain **chain_a, t_chain **chain_b)
 {
-	ft_push(list->num_b, list->num_a, &list->size_b, &list->size_a);
-	ft_printf("pb\n");
-	list->moves++;
+	ft_push(chain_a, chain_b);
+	ft_putstr("pb\n");
 }
+

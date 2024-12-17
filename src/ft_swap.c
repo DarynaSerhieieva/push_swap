@@ -1,35 +1,33 @@
 #include <libft.h>
 #include <push_swap.h>
 
-void	ft_swap(t_data *x, t_data *y, int size)
+void	ft_swap(t_chain **chain)
 {
-	t_data	tmp;
+	t_chain	*tmp;
 
-	if (size < 2)
+	if (!*chain || (*chain)->next == NULL)
 		return ;
-	tmp = *x;
-	*x = *y;
-	*y = tmp;
+	tmp = *chain;
+	*chain = (*chain)->next;
+	tmp->next = (*chain)->next;
+	(*chain)->next = tmp;
 }
 
-void	sa(t_list *list)
+void	sa(t_chain **chain_a)
 {
-	ft_swap(&list->num_a[0], &list->num_a[1], list->size_a);
+	ft_swap(chain_a);
 	ft_printf("sa\n");
-	list->moves++;
 }
 
-void	sb(t_list *list)
+void	sb(t_chain **chain_b)
 {
-	ft_swap(&list->num_b[0], &list->num_b[1], list->size_b);
+	ft_swap(chain_b);
 	ft_printf("sb\n");
-	list->moves++;
 }
 
-void	ss(t_list *list)
+void	ss(t_chain **chain_a, t_chain **chain_b)
 {
-	ft_swap(&list->num_a[0], &list->num_a[1], list->size_a);
-	ft_swap(&list->num_b[0], &list->num_b[1], list->size_b);
+	ft_swap(chain_a);
+	ft_swap(chain_b);
 	ft_printf("ss\n");
-	list->moves++;
 }

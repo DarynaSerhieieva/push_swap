@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:53:22 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/11/06 18:08:06 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:00:26 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <ctype.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100

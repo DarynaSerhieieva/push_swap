@@ -6,7 +6,7 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:15:11 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/12/04 22:20:11 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/12/17 18:58:48 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,76 +15,58 @@
 
 # include <fcntl.h>
 # include <stdbool.h>
-# include <limits.h>
 
-typedef struct s_data
+typedef struct s_chain
 {
-	int		num_int;
-	char	*num_char;
-	bool	negative;
-	int		size;
-	int		index;
-}	t_data;
+	int				value;
+	int				index;
+	int				pos;
+	int				target;
+	int				cost_a;
+	int				cost_b;
+	struct s_chain	*next;
+}	t_chain;
 
-typedef struct s_list
-{
-	char	**list_a;
-	t_data	*num_a;
-	t_data	*num_b;
-	int		capacity;
-	int		size_a;
-	int		size_b;
-	int		moves;
-	int		max_value;
-}	t_list;
-
-// push_swap
-int		push_swap(int x);
-
-//utils
-int		list_size(char **list);
-void	free_memory(t_list *list, int argc);
+//push_swap
+void	push_swap(t_chain **chain_a, t_chain **chain_b, int size);
 
 //list_validation
-int		fill_list_a(t_list *list, int start_index);
-int		check_dublicat(t_data *array, int size);
-int		check_argv(int argc, char **argv, t_list *list);
-int		ft_atoi_custom(char *nptr, int *num);
+void	list_validation(int size, char **array, t_chain *chain_a);
+void	get_numbers(char *array, t_chain **chain_a);
+int		check_dublicat(t_chain *column);
+int		is_num(char	*str);
 
-//sort
-void	sort_a_b(t_list *list);
-void	sort_a(t_list *list);
-void	sort_b(t_list *list);
-//
-void	ft_sort_small(t_list *list);
+//ring_operations
+void	add_ring(t_chain **chain, t_chain *new);
+t_chain	*before_bottom(t_chain *chain);
+t_chain	*get_bottom(t_chain *chain);
+t_chain	*new_ring(int value);
+int		get_chain_size(t_chain	*chain);
 
-//swap
-void	ft_swap(t_data *x, t_data *y, int size);
-void	sa(t_list *list);
-void	sb(t_list *list);
-void	ss(t_list *list);
 
-//push
-void	ft_push(t_data *dest, t_data *list, int *dest_size, int *list_size);
-void	pa(t_list *list);
-void	pb(t_list *list);
+//utils
+void	error_exit(t_chain **chain_a, t_chain **chain_b, char message);
+void	free_memory(t_chain **chain);
+void	get_index(t_chain *chain_a, int size);
+int		ft_atoi_custom(const char *nptr);
+int		is_sorted(t_chain *chain);
 
-//rotate
-void	ft_rotate(t_data *array, int size);
-void	ra(t_list *list);
-void	rb(t_list *list);
-void	rr(t_list *list);
+//ft_swap
+void	ft_swap(t_chain **chain);
+void	sa(t_chain **chain_a);
+void	sb(t_chain **chain_b);
+void	ss(t_chain **chain_a, t_chain **chain_b);
 
-//reverse_rotate
-void	ft_reverse_rotate(t_data *array, int size);
-void	rra(t_list *list);
-void	rrb(t_list *list);
-void	rrr(t_list *list);
+//ft_rotate
+void	ft_rotate(t_chain **chain);
+void	ra(t_chain **chain_a);
+void	rb(t_chain **chain_b);
+void	rr(t_chain **chain_a, t_chain **chain_b);
 
-//fil data
-int		fill_data(t_data **array_a, t_data **array_b, int capacity);
-void	quicksort(t_list *list);
-void	my_sort(t_list *list, int size);
-void	radix_sort(t_list *list);
+//ft_reverse_rotate
+void	ft_reverse_rotate(t_chain **chain);
+void	rra(t_chain **chain_a);
+void	rrb(t_chain **chain_b);
+void	rrr(t_chain **chain_a, t_chain **chain_b);
 
 #endif

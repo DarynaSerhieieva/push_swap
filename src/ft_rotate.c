@@ -1,41 +1,33 @@
 #include <libft.h>
 #include <push_swap.h>
 
-void	ft_rotate(t_data *array, int size)
+void	ft_rotate(t_chain **chain)
 {
-	int		i;
-	t_data	tmp;
+	t_chain	*tmp;
+	t_chain	*tail;
 
-	i = 0;
-	tmp = array[0];
-	if (size < 2)
-		return ;
-	while (i < size - 1)
-	{
-		array[i] = array[i + 1];
-		i++;
-	}
-	array[size - 1] = tmp;
+	tmp = *chain;
+	*chain = (*chain)->next;
+	tail = get_bottom(*chain);
+	tmp->next = NULL;
+	tail->next = tmp;
 }
 
-void	ra(t_list *list)
+void	ra(t_chain **chain_a)
 {
-	ft_rotate(list->num_a, list->size_a);
-	// ft_printf("ra\n");
-	list->moves++;
+	ft_rotate(chain_a);
+	ft_printf("ra\n");
 }
 
-void	rb(t_list *list)
+void	rb(t_chain **chain_b)
 {
-	ft_rotate(list->num_b, list->size_b);
+	ft_rotate(chain_b);
 	ft_printf("rb\n");
-	list->moves++;
 }
 
-void	rr(t_list *list)
+void	rr(t_chain **chain_a, t_chain **chain_b)
 {
-	ft_rotate(list->num_a, list->size_a);
-	ft_rotate(list->num_b, list->size_b);
+	ft_rotate(chain_a);
+	ft_rotate(chain_b);
 	ft_printf("rr\n");
-	list->moves++;
 }

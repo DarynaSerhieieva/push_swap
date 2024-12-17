@@ -6,69 +6,40 @@
 /*   By: dserhiei <dserhiei@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:14:54 by dserhiei          #+#    #+#             */
-/*   Updated: 2024/12/05 19:35:49 by dserhiei         ###   ########.fr       */
+/*   Updated: 2024/12/17 18:37:14 by dserhiei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <push_swap.h>
 
+void	push_swap(t_chain **chain_a, t_chain **chain_b, int size)
+{
+	if (size == 2)
+		do_sa(chain_a);
+	else if (size == 3)
+		sort_three(chain_a);
+	else if (size > 3)
+		sort(chain_a, chain_b);
+}
+
+
 int	main(int argc, char **argv)
 {
-	t_list	list;
+	t_chain	*chain_a;
+	t_chain	*chain_b;
+	int		chain_size;
 
-	list.moves = 0;
-	// list.max_value = INT_MIN;
-	list.num_a = NULL;
-	list.num_b = NULL;
-	list.size_a = 0;
-	list.size_b = 0;
-	list.capacity = 0;
+	chain_a = NULL;
+	chain_b = NULL;
 	if (argc < 2)
-		return (ft_printf("Error: not enough arguments!\n"), 1);
-	if (!check_argv(argc, argv, &list))
-	{
-		free_memory(&list, argc);
-		return (1);
-	}
-	// for(int i = 0; i < list.size_a; i++)
-	// {
-	// 	ft_printf("Each befor number: %d\n", list.a[i]);
-	// }
-
-	
-
-	// sort_stack(&list);
-	
-	if (list.capacity < 6)
-		ft_sort_small(&list);
-	else
-	{
-		quicksort(&list);
-		radix_sort(&list);
-		// my_sort(&list, list.capacity);
-	}
-		
-	ft_printf("Number A  after: ");
-	for(int i = 0; i < list.capacity; i++)
-	{
-		ft_printf("%d, ", list.num_a[i].num_int);
-	}
-	ft_printf("\n");
-	ft_printf("index  after: ");
-	for(int i = 0; i < list.capacity; i++)
-	{
-		ft_printf("%d, ", list.num_a[i].index);
-	}
-	ft_printf("\n");
-	ft_printf("count: %d, %d\n", list.moves, list.capacity);
-
-	// for(int i = 0; i < list.capacity; i++)
-	// {
-	// 	ft_printf("Number B after: %d\n", list.b[i]);
-	// }
-	// ft_printf("size A: %d, size B : %d\n", list.size_a, list.size_b);
-	free_memory(&list, argc);
-
+		error_exit(NULL, NULL, "argv is empty!");
+	list_validation(argc, argv, chain_a);
+	chain_size = get_stack_size(chain_a);
+	get_index(chain_a, chain_size + 1);
+	if (!is_sorted(chain_a))
+		push_swap(&chain_a, &chain_b, chain_size);
+	free_memory(&chain_a);
+	free_memory(&chain_b);
 	return (0);
 }

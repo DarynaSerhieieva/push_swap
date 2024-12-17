@@ -1,76 +1,77 @@
 #include <libft.h>
 #include <push_swap.h>
 
-int	fill_list_a(t_list *list, int i)
+int	check_dublicat(t_chain *column)
 {
-	int	j;
+	t_chain	*tmp;
+	t_chain	*tmp2;
 
-	j = 0;
-	if (!fill_data(&list->num_a, &list->num_b, list->capacity))
-		return (0);
-	while (list->list_a[i])
+	tmp = column;
+	while (tmp)
 	{
-		if (!ft_atoi_custom(list->list_a[i], &list->num_a[j].num_int))
-			return (0);
-		list->num_a[j].num_char = ft_itoa(list->num_a[j].num_int);
-		if (list->num_a[j].num_int < 0)
-			list->num_a[j].negative = true;
-		// list->num_a[j].size = ft_strlen(list->num_a[j].num_char);
-		if (list->num_a[j].negative)
-			list->num_a[j].num_char--;
-		// if (list->num_a[j].num_int > list->max_value)
-		// 	list->max_value = list->num_a[j].num_int;
-		i++;
-		j++;
+		tmp2 = tmp->next;
+		while (tmp2)
+		{
+			if (tmp->value == tmp2->value)
+				return (1);
+			tmp2 = tmp2->next;
+		}
+		tmp = tmp->next;
 	}
-	return (1);
+	return (0);
 }
 
-int	check_dublicat(t_data *array, int size)
+int	is_num(char	*str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (i < size)
+	if ((str[i] == '-' || str[i] == '+') && (ft_strlen(str) > 1))
+		i++;
+	while (str[i] != '\0')
 	{
-		j = i;
-		while (j < size)
-		{
-			if (i != j && array[i].num_int == array[j].num_int)
-				return (ft_printf("Error: a list has a dublicat\n"), 0);
-			j++;
-		}
+		if (!ft_isdigit(str[i]))
+			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	check_argv(int argc, char **argv, t_list *list)
+void	get_numbers(char *array, t_chain **chain_a)
 {
-	int	start_index;
+	char		**tmp;
+	long int	number;
+	int			i;
 
-	start_index = 0;
-	if (argc == 2)
+	tmp = ft_split(array, ' ');
+	i = 0;
+	while (tmp[i] != NULL)
 	{
-		list->list_a = ft_split(argv[1], ' ');
-		if (!list->list_a)
-			return (ft_printf("Error: can not split the line!\n"), 0);
-		list->capacity = list_size(list->list_a);
+		if (is_num(tmp[i]))
+		{
+			number = ft_atoi_custom(tmp[i]);
+			if (number > INT_MAX || number < INT_MIN)
+				error_exit(chain_a, NULL, "int is too big or too small!");
+			add_ring(chain_a, new_ring(number));
+		}
+		else
+			error_exit(chain_a, NULL, "argument must contain only numbers!");
+		free(tmp[i]);
+		i++;
 	}
-	else
+	free(tmp);
+}
+
+void	list_validation(int size, char **array, t_chain *chain_a)
+{
+	int		i;
+
+	i = 1;
+	while (i < size)
 	{
-		list->capacity = argc - 1;
-		list->list_a = argv;
-		start_index = 1;
+		get_numbers(array[i], chain_a);
+		i++;
 	}
-	if (list->capacity < 1)
-		return (ft_printf("Error: size is not valid!\n"), 0);
-	list->size_a = list->capacity;
-	if (!fill_list_a(list, start_index))
-		return (0);
-	if (!check_dublicat(list->num_a, list->capacity))
-		return (0);
-	return (1);
+	if (check_dublicat(chain_a))
+		error_exit(chain_a, NULL, "array has duplicate!");
 }

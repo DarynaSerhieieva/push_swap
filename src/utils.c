@@ -1,57 +1,93 @@
 #include <libft.h>
 #include <push_swap.h>
 
-int	ft_atoi_custom(char *nptr, int *num)
+int	is_sorted(t_chain *chain)
 {
-	int	sign;
-	int	digit;
-
-	sign = 1;
-	if (*nptr == '-')
+	while (chain->next != NULL)
 	{
-		sign = -1;
-		nptr++;
+		if (chain->value > chain->next->value)
+			return (0);
+		chain = chain->next;
 	}
-	else if (*nptr == '+')
-		nptr++;
-	while (*nptr != '\0')
-	{
-		if (!ft_isdigit(*nptr))
-			return (ft_printf("Error: the charecter is not digit\n"), 0);
-		digit = *nptr - '0';
-		if ((sign == 1 && (*num > (INT_MAX - digit) / 10)) || \
-			(sign == -1 && digit == 0 && (*num > INT_MAX / 10)) || \
-			(sign == -1 && digit != 0 && *num > (INT_MAX - digit + 1) / 10))
-			return ((ft_printf("Error: the INT is to big or to small\n"), 0));
-		*num = *num * 10 + digit;
-		nptr++;
-	}
-	*num *= sign;
 	return (1);
 }
 
-int	list_size(char **list)
+void	get_index(t_chain *chain_a, int size)
 {
-	int	i;
+	t_chain	*ptr;
+	t_chain	*biggest;
+	int		value;
 
-	i = 0;
-	while (list[i])
-		i++;
-	return (i);
+	while (--size > 0)
+	{
+		ptr = chain_a;
+		biggest = NULL;
+		value = INT_MIN;
+		while (ptr)
+		{
+			if (ptr->value == INT_MIN && ptr->index == 0)
+				ptr->index = 1;
+			if (ptr->value > value && ptr->index == 0)
+			{
+				value = ptr->value;
+				biggest = ptr;
+				ptr = ptr->next;
+			}
+			else
+				ptr = ptr->next;
+		}
+		if (biggest != NULL)
+			biggest->index = size;
+	}
 }
 
-void	free_memory(t_list *list, int argc)
+int	ft_atoi_custom(const char *nptr)
 {
-	if (argc == 2 && list->list_a)
-		ft_free_matrix((void **)list->list_a, list->capacity);
-	if (list->num_a)
+	long int	num;
+	int			sign;
+	int			i;
+
+	i = 0;
+	num = 0;
+	sign = 1;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-')
 	{
-		free(list->num_a);
-		list->num_a = NULL;
+		sign = -1;
+		i++;
 	}
-	if (list->num_b)
+	else if (nptr[i] == '+')
+		i++;
+	while (nptr[i] != '\0' && nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		free(list->num_b);
-		list->num_b = NULL;
+		num = num * 10 + (nptr[i] - '0');
+		i++;
 	}
+	return (sign * num);
+}
+
+void	free_memory(t_chain **chain)
+{
+	t_chain	*tmp;
+
+	if (!chain || !(*chain))
+		return ;
+	while (*chain)
+	{
+		tmp = (*chain)->next;
+		free(*chain);
+		*chain = tmp;
+	}
+	*chain = NULL;
+}
+
+void	error_exit(t_chain **chain_a, t_chain **chain_b, char message)
+{
+	if (chain_a == NULL || *chain_a != NULL)
+		free_memory(chain_a);
+	if (chain_b == NULL || *chain_b != NULL)
+		free_memory(chain_b);
+	ft_printf("ERROR: %s/n", message);
+	exit(1);
 }

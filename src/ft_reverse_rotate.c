@@ -2,41 +2,35 @@
 #include <push_swap.h>
 
 
-void	ft_reverse_rotate(t_data *array, int size)
+void	ft_reverse_rotate(t_chain **chain)
 {
-	int		i;
-	t_data	tmp;
+	t_chain	*tmp;
+	t_chain	*tail;
+	t_chain	*new_tail;
 
-	i = size - 1;
-	tmp = array[i];
-	if (size < 2)
-		return ;
-	while (i > 0)
-	{
-		array[i] = array[i - 1];
-		i--;
-	}
-	array[0] = tmp;
+	tail = get_bottom(*chain);
+	new_tail = before_bottom(*chain);
+	tmp = *chain;
+	*chain = tail;
+	(*chain)->next = tmp;
+	new_tail->next = NULL;
 }
 
-void	rra(t_list *list)
+void	rra(t_chain **chain_a)
 {
-	ft_reverse_rotate(list->num_a, list->size_a);
+	ft_reverse_rotate(chain_a);
 	ft_printf("rra\n");
-	list->moves++;
 }
 
-void	rrb(t_list *list)
+void	rrb(t_chain **chain_b)
 {
-	ft_reverse_rotate(list->num_b, list->size_b);
+	ft_reverse_rotate(chain_b);
 	ft_printf("rrb\n");
-	list->moves++;
 }
 
-void	rrr(t_list *list)
+void	rrr(t_chain **chain_a, t_chain **chain_b)
 {
-	ft_reverse_rotate(list->num_a, list->size_a);
-	ft_reverse_rotate(list->num_b, list->size_b);
+	ft_reverse_rotate(chain_a);
+	ft_reverse_rotate(chain_b);
 	ft_printf("rrr\n");
-	list->moves++;
 }
