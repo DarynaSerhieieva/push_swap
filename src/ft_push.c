@@ -13,15 +13,14 @@ void	ft_push(t_chain **src, t_chain **dst)
 	*src = tmp;
 }
 
-void	do_pa(t_chain **chain_a, t_chain **chain_b)
+void	pa(t_chain **chain_a, t_chain **chain_b)
 {
 	ft_push(chain_b, chain_a);
-	ft_putstr("pa\n");
+	ft_printf("pa\n");
 }
 
-void	do_pb(t_chain **chain_a, t_chain **chain_b)
+void	pb(t_chain **chain_a, t_chain **chain_b)
 {
 	ft_push(chain_a, chain_b);
-	ft_putstr("pb\n");
+	ft_printf("pb\n");
 }
-

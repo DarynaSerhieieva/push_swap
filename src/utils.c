@@ -82,12 +82,12 @@ void	free_memory(t_chain **chain)
 	*chain = NULL;
 }
 
-void	error_exit(t_chain **chain_a, t_chain **chain_b, char message)
+void	error_exit(t_chain **chain_a, t_chain **chain_b, char *message)
 {
 	if (chain_a == NULL || *chain_a != NULL)
 		free_memory(chain_a);
 	if (chain_b == NULL || *chain_b != NULL)
 		free_memory(chain_b);
-	ft_printf("ERROR: %s/n", message);
+	ft_printf("ERROR: %s\n", message);
 	exit(1);
 }

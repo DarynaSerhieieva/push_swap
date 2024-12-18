@@ -62,7 +62,7 @@ void	get_numbers(char *array, t_chain **chain_a)
 	free(tmp);
 }
 
-void	list_validation(int size, char **array, t_chain *chain_a)
+void	list_validation(int size, char **array, t_chain **chain_a)
 {
 	int		i;
 
@@ -72,6 +72,6 @@ void	list_validation(int size, char **array, t_chain *chain_a)
 		get_numbers(array[i], chain_a);
 		i++;
 	}
-	if (check_dublicat(chain_a))
+	if (check_dublicat(*chain_a))
 		error_exit(chain_a, NULL, "array has duplicate!");
 }

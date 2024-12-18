@@ -1,7 +1,6 @@
 #include <libft.h>
 #include <push_swap.h>
 
-
 void	ft_reverse_rotate(t_chain **chain)
 {
 	t_chain	*tmp;
