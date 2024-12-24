@@ -41,7 +41,7 @@ void	get_index(t_chain *chain_a, int size)
 	}
 }
 
-int	ft_atoi_custom(const char *nptr)
+long int	ft_atoi_custom(const char *nptr)
 {
 	long int	num;
 	int			sign;

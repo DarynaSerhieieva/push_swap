@@ -23,11 +23,11 @@ int	position_lowest_index(t_chain **chain)
 	return (lowest_p);
 }
 
-int	get_target(t_chain **chain_a, int index_b, int target_i, int target)
+int	get_target(t_chain **chain, int index_b, int target_i, int target)
 {
 	t_chain	*tmp;
 
-	tmp = *chain_a;
+	tmp = *chain;
 	while (tmp)
 	{
 		if (tmp->index > index_b && tmp->index < target_i)
@@ -39,7 +39,7 @@ int	get_target(t_chain **chain_a, int index_b, int target_i, int target)
 	}
 	if (target_i != INT_MAX)
 		return (target);
-	tmp = *chain_a;
+	tmp = *chain;
 	while (tmp)
 	{
 		if (tmp->index < target_i)
